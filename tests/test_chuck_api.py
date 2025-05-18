@@ -6,7 +6,7 @@ import pytest
 async def test_get_joke_text(cnapi):
     '''Получение текста рандомной шутки.
     '''
-    r = await cnapi.get_random_joke()
+    r = await cnapi.get_random_joke_text()
     assert isinstance(r, str)
 
 
@@ -14,7 +14,7 @@ async def test_get_joke_text(cnapi):
 async def test_get_categories(cnapi):
     '''Получение и обновление списка категорий.
     '''
-    r = await cnapi.get_categories()
+    r = await cnapi.get_categories_list()
     assert isinstance(r, list)
 
 

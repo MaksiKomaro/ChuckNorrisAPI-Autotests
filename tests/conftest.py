@@ -27,16 +27,18 @@ class ChuckNorrisAPI:
             response = await client.get(path, params=params, headers=headers)
             return response
     
-    async def get_categories(self) -> list:
+    async def get_categories_list(self) -> list:
         """Получить список категорий"""
         response = await self.get(self.CATEGORIES_PATH)
         self.categories = response.json()
         return self.categories
     
-    async def get_random_joke(self, ) -> str:
+    async def get_random_joke_text(self, ) -> str:
         """Получить рандомную шутку"""
         response = await self.get(self.RANDOM_PATH)
-        return response.json()['value']
+        joke_text = response.json()['value']
+        logging.info(joke_text)
+        return joke_text
 
 
 @pytest.fixture(scope='session')
@@ -57,5 +59,5 @@ def func_duration():
 
 if __name__ == '__main__':
     cn = ChuckNorrisAPI()
-    r = asyncio.run(cn.get_random_joke())
+    r = asyncio.run(cn.get_random_joke_text())
     print(r)
