@@ -22,4 +22,20 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - run: python -m pytest tests
+      - name: Run tests and generate Allure results
+      - run: python -m pytest --alluredir=alluredir tests
+
+      - name: Install Allure CLI
+        run: |
+          npm install -g allure-commandline
+
+      - name: Generate Allure HTML report
+        run: |
+          allure generate alluredir -o allure-report --clean
+
+      - name: Deploy Allure report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
