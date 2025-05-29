@@ -1,0 +1,2 @@
+INFO     httpx:_client.py:1740 HTTP Request: GET https://api.chucknorris.io/jokes/random?category=manualQA "HTTP/1.1 404 Not Found"
+INFO     root:conftest.py:86 Продолжительность теста 0.8885447978973389с

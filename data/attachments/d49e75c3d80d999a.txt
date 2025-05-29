@@ -1,0 +1,1 @@
+INFO     httpx:_client.py:1740 HTTP Request: GET https://api.chucknorris.io/jokes/random?category=fashion "HTTP/1.1 200 OK"
